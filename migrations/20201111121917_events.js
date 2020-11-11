@@ -1,9 +1,9 @@
 exports.up = function (knex) {
   return knex.schema.createTable("events", (table) => {
     table.increments("id").primary();
-    table.string("event-name");
-    table.string("event-description");
-    table.datetime("date-time");
+    table.string("event_name");
+    table.string("event_description");
+    table.datetime("date_time");
   });
 };
 
