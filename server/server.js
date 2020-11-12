@@ -11,4 +11,4 @@ server.use(express.static('public'))
 server.use('/api/v1', authRoutes)
 server.use('/api/v1', indexRoutes)
 
-module.exports = server
+module.exports = server 
