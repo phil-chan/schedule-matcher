@@ -2,8 +2,8 @@ import React from 'react'
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import Login from './Login'
-import Register from './Register'
+// import Login from './Login'
+// import Register from './Register'
 import Nav from './Nav'
 import { checkAuth } from '../actions/auth'
 
@@ -29,11 +29,11 @@ export class App extends React.Component {
           </div>
 
           <div className=''>
-            {!auth.isAuthenticated &&
+            {/* {!auth.isAuthenticated &&
               <Route exact path="/" component={Login} />
-            }
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            } */}
+            {/* <Route path="/login" component={Login} /> */}
+            {/* <Route path="/register" component={Register} /> */}
           </div>
 
         </div>
