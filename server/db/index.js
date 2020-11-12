@@ -1,38 +1,60 @@
 const connection = require("./connection");
 
+//create, read, update, delete event DONE
+//create, read, update, delete user
+//create, delete attendee
+
 function createEvent(eventDetails, db = connection) {
-  // {
-  //     id: 2,
-  //     event_name: "dinner",
-  //     event_description: "dinner with friends at nandos",
-  //     date_time: new Date("2/3/20"),
-  //   },
   return db("events").insert(eventDetails);
 }
 
-function createUser(userDetails, db = connection) {
-  //{ id: 1, username: "phil", email: "filnzl@hotmail.com" },
-  return db("user").insert(userDetails);
+function recieveEventById(eventId, db = connection) {
+  return db("events").where("id", eventId);
 }
 
-function joinEvent(userId, eventId, db = connection) {
-  //{ event_id: 1, user_id: 1 }
+function updateEvent(newDetails, eventId, db = connection) {
+  return db("events").where("id", eventId).update(newDetails);
+}
+
+function deleteEvent(eventId, db = connection) {
+  return db("events").where("id", eventId).del()
+}
+
+function createUser(userDetails, db = connection) {
+  return db("users").insert(userDetails);
+}
+
+function recieveUserById(userId, db = connection) {
+  return db("users").where("id", userId);
+}
+
+function updateUser(newDetails, userId, db = connection) {
+  return db("users").where("id", userId).update(newDetails);
+}
+
+function deleteUser(userId, db = connection) {
+  return db("users").where("id", userId).del()
+}
+
+function createAttendee(userId, eventId, db = connection) {
   let newAttendee = { event_id: eventId, user_id: userId };
   return db("attendees").insert(newAttendee);
 }
 
-function getEventById(eventId, db = connection) {
-  return db("events").where("id", eventId);
+function deleteAttendee(userId, eventId, db = connection) {
+  return db("attendees").where("user_id", userId, "event_id", eventId).del();
 }
 
-function editEvent(newDetails, eventId, db = connection) {
-  return db("events").where("id", eventId).update(newDetails);
-}
 
 module.exports = {
   createEvent,
+  recieveEventById,
+  updateEvent,
+  deleteEvent,
   createUser,
-  joinEvent,
-  getEventById,
-  editEvent,
+  recieveUserById,
+  updateUser,
+  deleteUser,
+  createAttendee,
+  deleteAttendee
 };
