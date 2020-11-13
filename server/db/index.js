@@ -1,9 +1,5 @@
 const connection = require("./connection");
 
-//create, read, update, delete event DONE
-//create, read, update, delete user
-//create, delete attendee
-
 function createEvent(eventDetails, db = connection) {
   return db("events").insert(eventDetails);
 }
@@ -17,7 +13,7 @@ function updateEvent(newDetails, eventId, db = connection) {
 }
 
 function deleteEvent(eventId, db = connection) {
-  return db("events").where("id", eventId).del()
+  return db("events").where("id", eventId).del();
 }
 
 function createUser(userDetails, db = connection) {
@@ -33,7 +29,7 @@ function updateUser(newDetails, userId, db = connection) {
 }
 
 function deleteUser(userId, db = connection) {
-  return db("users").where("id", userId).del()
+  return db("users").where("id", userId).del();
 }
 
 function createAttendee(userId, eventId, db = connection) {
@@ -45,7 +41,6 @@ function deleteAttendee(userId, eventId, db = connection) {
   return db("attendees").where("user_id", userId, "event_id", eventId).del();
 }
 
-
 module.exports = {
   createEvent,
   recieveEventById,
@@ -56,5 +51,5 @@ module.exports = {
   updateUser,
   deleteUser,
   createAttendee,
-  deleteAttendee
+  deleteAttendee,
 };
