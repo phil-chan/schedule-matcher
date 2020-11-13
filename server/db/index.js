@@ -32,12 +32,24 @@ function deleteUser(userId, db = connection) {
   return db("users").where("id", userId).del();
 }
 
-function createAttendee(userId, eventId, db = connection) {
+function getAllAttendees(db = connection) {
+  return db("attendees").select();
+}
+
+function getAttendeesById(userId, db = connection) {
+  return db("attendees").where("user_id", userId);
+}
+
+function getAttendeesByEventId(eventId, db = connection) {
+  return db("attendees").where("event_id", eventId);
+}
+
+function createAttendee(eventId, userId, db = connection) {
   let newAttendee = { event_id: eventId, user_id: userId };
   return db("attendees").insert(newAttendee);
 }
 
-function deleteAttendee(userId, eventId, db = connection) {
+function deleteAttendee(eventId, userId, db = connection) {
   return db("attendees").where("user_id", userId, "event_id", eventId).del();
 }
 
@@ -50,6 +62,9 @@ module.exports = {
   recieveUserById,
   updateUser,
   deleteUser,
+  getAttendeesById,
   createAttendee,
   deleteAttendee,
+  getAllAttendees,
+  getAttendeesByEventId,
 };
