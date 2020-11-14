@@ -8,7 +8,7 @@ import Nav from './Nav'
 import { checkAuth } from '../actions/auth'
 
 import Events from './Events'
-// import Add from './Add'
+import Add from './Add'
 
 export class App extends React.Component {
   componentDidMount() {
@@ -19,34 +19,34 @@ export class App extends React.Component {
   render() {
     const { auth } = this.props
     return (
-      <Router>
-        <div className="container has-text-centered">
+      <>
+        <Router>
+          <div className="container has-text-centered">
 
-          <div className="hero is-small is-primary">
-            <div className="hero-body has-text-centered">
-              <Link to='/' className="">
-                <h1 className="title is-1">Schedule Matcher</h1>
-              </Link>
-              <Route path="/" component={Nav} />
+            <div className="hero is-small is-primary">
+              <div className="hero-body has-text-centered">
+                <Link to='/' className="">
+                  <h1 className="title is-1">Schedule Matcher</h1>
+                </Link>
+                <Route path="/" component={Nav} />
+              </div>
             </div>
-          </div>
 
-          {/* <Route exact path="/" component={Events} />
-          <Route exact path="/add" component={Add} />
-          <Link to="/add">
-            <button>Add</button>
-          </Link> */}
 
-          <div className=''>
-            {/* {!auth.isAuthenticated &&
+
+            <div className=''>
+              <Route exact path="/" component={Events} />
+              <Route exact path="/add" component={Add} />
+              {/* {!auth.isAuthenticated &&
               <Route exact path="/" component={Login} />
             } */}
-            {/* <Route path="/login" component={Login} /> */}
-            {/* <Route path="/register" component={Register} /> */}
-          </div>
+              {/* <Route path="/login" component={Login} /> */}
+              {/* <Route path="/register" component={Register} /> */}
+            </div>
 
-        </div>
-      </Router>
+          </div>
+        </Router>
+      </>
     )
   }
 }
