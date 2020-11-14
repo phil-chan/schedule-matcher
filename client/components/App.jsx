@@ -1,11 +1,14 @@
 import React from 'react'
-import {HashRouter as Router, Route, Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 // import Login from './Login'
 // import Register from './Register'
 import Nav from './Nav'
 import { checkAuth } from '../actions/auth'
+
+import Events from './Events'
+// import Add from './Add'
 
 export class App extends React.Component {
   componentDidMount() {
@@ -14,7 +17,7 @@ export class App extends React.Component {
   }
 
   render() {
-    const {auth} = this.props
+    const { auth } = this.props
     return (
       <Router>
         <div className="container has-text-centered">
@@ -27,6 +30,12 @@ export class App extends React.Component {
               <Route path="/" component={Nav} />
             </div>
           </div>
+
+          {/* <Route exact path="/" component={Events} />
+          <Route exact path="/add" component={Add} />
+          <Link to="/add">
+            <button>Add</button>
+          </Link> */}
 
           <div className=''>
             {/* {!auth.isAuthenticated &&
@@ -42,7 +51,7 @@ export class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({ auth }) => {
   return {
     auth
   }
