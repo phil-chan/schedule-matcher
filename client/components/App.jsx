@@ -1,11 +1,14 @@
 import React from 'react'
-import {HashRouter as Router, Route, Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import Login from './Login'
-import Register from './Register'
+// import Login from './Login'
+// import Register from './Register'
 import Nav from './Nav'
 import { checkAuth } from '../actions/auth'
+
+import Events from './Events'
+import Add from './Add'
 
 export class App extends React.Component {
   componentDidMount() {
@@ -14,35 +17,41 @@ export class App extends React.Component {
   }
 
   render() {
-    const {auth} = this.props
+    const { auth } = this.props
     return (
-      <Router>
-        <div className="container has-text-centered">
+      <>
+        <Router>
+          <div className="container has-text-centered">
 
-          <div className="hero is-small is-primary">
-            <div className="hero-body has-text-centered">
-              <Link to='/' className="">
-                <h1 className="title is-1">Greetings!</h1>
-              </Link>
-              <Route path="/" component={Nav} />
+            <div className="hero is-small is-primary">
+              <div className="hero-body has-text-centered">
+                <Link to='/' className="">
+                  <h1 className="title is-1">Schedule Matcher</h1>
+                </Link>
+                <Route path="/" component={Nav} />
+              </div>
             </div>
-          </div>
 
-          <div className=''>
-            {!auth.isAuthenticated &&
+
+
+            <div className=''>
+              <Route exact path="/" component={Events} />
+              <Route exact path="/add" component={Add} />
+              {/* {!auth.isAuthenticated &&
               <Route exact path="/" component={Login} />
-            }
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-          </div>
+            } */}
+              {/* <Route path="/login" component={Login} /> */}
+              {/* <Route path="/register" component={Register} /> */}
+            </div>
 
-        </div>
-      </Router>
+          </div>
+        </Router>
+      </>
     )
   }
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({ auth }) => {
   return {
     auth
   }
