@@ -40,7 +40,7 @@ function getAttendeesById(userId, db = connection) {
   return db("attendees").where("user_id", userId);
 }
 
-function getAttendeesByEventId(eventId, db = connection) {
+function getAttendeesByEventId(eventId, db = connection) {  
   return db("attendees").where("event_id", eventId);
 }
 

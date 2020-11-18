@@ -1,21 +1,21 @@
 import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import bulmaCalendar from '~bulma-calendar/dist/js/bulma-calendar.min.js';
+// import bulmaCalendar from '~bulma-calendar/dist/js/bulma-calendar.min.js';
 
 // import { checkAuth } from '../actions/auth'
 
 // Initialize all input of type date
-const calendars = bulmaCalendar.attach('[type="date"]', options);
+// const calendars = bulmaCalendar.attach('[type="date"]', options);
 
-// To access to bulmaCalendar instance of an element
-var element = document.querySelector('#my-element');
-if (element) {
-  // bulmaCalendar instance is available as element.bulmaCalendar
-  element.bulmaCalendar.on('select', function (datepicker) {
-    console.log(datepicker.data.value());
-  });
-}
+// // To access to bulmaCalendar instance of an element
+// // var element = document.querySelector('#my-element');
+// // if (element) {
+// //   // bulmaCalendar instance is available as element.bulmaCalendar
+// // //   element.bulmaCalendar.on('select', function (datepicker) {
+// //     // console.log(datepicker.data.value());
+// //   });
+// }
 
 export class Add extends React.Component {
   componentDidMount() {
