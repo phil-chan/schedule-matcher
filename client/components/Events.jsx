@@ -10,9 +10,9 @@ export class Events extends React.Component {
   render() {
     return (
       <>
-        <div class="columns is-centered">
+        <div className="columns is-centered">
           <div className="buttons are-large">
-            <div class="column">
+            <div className="column">
               <Link to="/add">
                 <button className="button is-success">Add New Event</button>
               </Link>
