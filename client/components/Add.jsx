@@ -1,27 +1,28 @@
 import React from "react";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-// import bulmaCalendar from '~bulma-calendar/dist/js/bulma-calendar.min.js';
-
-// import { checkAuth } from '../actions/auth'
-
-// Initialize all input of type date
-// const calendars = bulmaCalendar.attach('[type="date"]', options);
-
-// // To access to bulmaCalendar instance of an element
-// // var element = document.querySelector('#my-element');
-// // if (element) {
-// //   // bulmaCalendar instance is available as element.bulmaCalendar
-// // //   element.bulmaCalendar.on('select', function (datepicker) {
-// //     // console.log(datepicker.data.value());
-// //   });
-// }
+import { addEvent } from "../apis/index";
 
 export class Add extends React.Component {
+  state = {
+    event_name: "",
+    event_description: "",
+    date_time: "",
+  };
+
   componentDidMount() {}
 
   handleSubmit = (e) => {
-      
+    let newEvent = this.state;
+    let dd = new Date(this.state.date_time); //convert to milliseconds
+    newEvent.date_time = dd;
+    addEvent(newEvent);
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
 
   render() {
@@ -31,7 +32,13 @@ export class Add extends React.Component {
           <div className="field">
             <label className="label">Event Name</label>
             <div className="control">
-              <input className="input" type="text" placeholder="e.g Dinner" />
+              <input
+                className="input"
+                type="text"
+                placeholder="e.g Dinner"
+                name="event_name"
+                onChange={this.handleChange}
+              />
             </div>
           </div>
 
@@ -40,8 +47,10 @@ export class Add extends React.Component {
             <div className="control">
               <input
                 className="input"
-                type="email"
+                type="text"
                 placeholder="e.g. with friends"
+                name="event_description"
+                onChange={this.handleChange}
               />
             </div>
           </div>
@@ -49,9 +58,17 @@ export class Add extends React.Component {
           <div className="field">
             <label className="label">Date</label>
             <div className="control">
-              <input type="date" />
+              <input
+                type="date"
+                name="date_time"
+                onChange={this.handleChange}
+              />
             </div>
           </div>
+
+          <button className="button is-info" onClick={() => this.handleSubmit}>
+            Submit
+          </button>
         </form>
       </>
     );
