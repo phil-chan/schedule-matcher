@@ -31,20 +31,18 @@ export class App extends React.Component {
               </div>
             </div>
 
-            <div className="">
-              {!auth.isAuthenticated ? (
-                <>
-                  <Route exact path="/" component={Login} />
-                  <Route path="/login" component={Login} />
-                  <Route path="/register" component={Register} />
-                </>
-              ) : (
-                <>
-                  <Route exact path="/" component={Events} />
-                  <Route exact path="/add" component={Add} />
-                </>
-              )}
-            </div>
+            {!auth.isAuthenticated ? (
+              <>
+                <Route exact path="/" component={Login} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+              </>
+            ) : (
+              <>
+                <Route exact path="/" component={Events} />
+                <Route exact path="/add" component={Add} />
+              </>
+            )}
           </div>
         </Router>
       </>
