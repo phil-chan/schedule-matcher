@@ -25,7 +25,7 @@ export class App extends React.Component {
             <div className="hero is-small is-primary">
               <div className="hero-body has-text-centered">
                 <Link to="/" className="">
-                  <h1 className="title is-1">Schedule Matcher</h1>
+                  <h1 className="title is-3">Schedule Matcher</h1>
                 </Link>
                 <Route path="/" component={Nav} />
               </div>

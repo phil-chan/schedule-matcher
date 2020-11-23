@@ -37,6 +37,16 @@ class Nav extends React.Component {
             id="navbarMenuHeroA"
             className={`navbar-menu ${showBurger ? "is-active" : ""}`}
           >
+            {auth.isAuthenticated && (
+              <div className="navbar-start">
+                <div className="navbar-item">
+                  <h1 className="subtitle">
+                    Logged in as: {auth.user.username}
+                  </h1>
+                </div>
+              </div>
+            )}
+
             <div className="navbar-end">
               {auth.isAuthenticated ? (
                 <>
