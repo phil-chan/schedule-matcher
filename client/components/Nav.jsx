@@ -1,66 +1,116 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { logoutUser } from '../actions/auth'
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { logoutUser } from "../actions/auth";
 
 class Nav extends React.Component {
   state = {
-    showBurger: false
-  }
+    showBurger: false,
+  };
 
   toggleBurger = () => {
     this.setState({
-      showBurger: !this.state.showBurger
-    })
-  }
+      showBurger: !this.state.showBurger,
+    });
+  };
 
   render() {
-    const { auth, logout } = this.props
-    const { showBurger } = this.state
-    return <nav className="navbar">
-      <div className="container">
-        <div className="navbar-brand">
-          <span onClick={this.toggleBurger} className={`navbar-burger burger ${showBurger ? 'is-active' : ''}`} data-target="navbarMenuHeroA">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="navbarMenuHeroA" className={`navbar-menu ${showBurger ? "is-active" : ''}`}>
-          <div className="navbar-end">
-            {auth.isAuthenticated
-              ? (
-                <Link to='/' className="navbar-item is-large" onClick={() => logout()}>Logout</Link>
-              )
-              : (
+    const { auth, logout } = this.props;
+    const { showBurger } = this.state;
+    return (
+      <nav className="navbar">
+        <div className="container">
+          <div className="navbar-brand">
+            <span
+              onClick={this.toggleBurger}
+              className={`navbar-burger burger ${
+                showBurger ? "is-active" : ""
+              }`}
+              data-target="navbarMenuHeroA"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div
+            id="navbarMenuHeroA"
+            className={`navbar-menu ${showBurger ? "is-active" : ""}`}
+          >
+            {auth.isAuthenticated && (
+              <div className="navbar-start">
+                <div className="navbar-item">
+                  <h1 className="subtitle">
+                    Logged in as: {auth.user.username}
+                  </h1>
+                </div>
+              </div>
+            )}
+
+            <div className="navbar-end">
+              {auth.isAuthenticated ? (
                 <>
-                  <Link onClick={this.toggleBurger} className="navbar-item is-large" to='/'>Events</Link>
-                  <Link onClick={this.toggleBurger} className="navbar-item is-large" to='/add'>Login</Link>
-                  {/* <Link onClick={this.toggleBurger} className="navbar-item is-large" to='/login'>Login</Link> */}
-                  {/* <Link onClick={this.toggleBurger} className="navbar-item" to='/register'>Register</Link> */}
+                  <Link
+                    to="/"
+                    className="navbar-item is-large"
+                    onClick={() => logout()}
+                  >
+                    Logout
+                  </Link>
+                  <Link
+                    onClick={this.toggleBurger}
+                    className="navbar-item is-large"
+                    to="/"
+                  >
+                    Events
+                  </Link>
+                  <Link
+                    onClick={this.toggleBurger}
+                    className="navbar-item is-large"
+                    to="/add"
+                  >
+                    Add
+                  </Link>
                 </>
-              )
-            }
+              ) : (
+                <>
+                  <Link
+                    onClick={this.toggleBurger}
+                    className="navbar-item is-large"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    onClick={this.toggleBurger}
+                    className="navbar-item"
+                    to="/register"
+                  >
+                    Register
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    );
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     logout: () => {
-      const confirmSuccess = () => ownProps.history.push('/')
-      dispatch(logoutUser(confirmSuccess))
-    }
-  }
-}
+      const confirmSuccess = () => ownProps.history.push("/");
+      dispatch(logoutUser(confirmSuccess));
+    },
+  };
+};
 
 const mapStateToProps = ({ auth }) => {
   return {
-    auth
-  }
-}
+    auth,
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
