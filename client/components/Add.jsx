@@ -24,18 +24,17 @@ export class Add extends React.Component {
   render() {
     return (
       <>
-        <h1>This is the add component</h1>
-        <div class="field">
-          <label class="label">Event Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Dinner" />
+        <div className="field">
+          <label className="label">Event Name</label>
+          <div className="control">
+            <input className="input" type="text" placeholder="e.g Dinner" />
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Description</label>
-          <div class="control">
-            <input class="input" type="email" placeholder="e.g. with friends" />
+        <div className="field">
+          <label className="label">Description</label>
+          <div className="control">
+            <input className="input" type="email" placeholder="e.g. with friends" />
           </div>
         </div>
 
