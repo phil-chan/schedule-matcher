@@ -1,6 +1,6 @@
 import request from "superagent";
 
-export function addEvent(event) {
+export function apiAddEvent(event) {
   return request
     .post("/api/v1/events")
     .send(event)
@@ -17,4 +17,16 @@ export function apiGetEventsByUserId(userId) {
 
 export function apiGetEventById(eventId) {
   return request.get("/api/v1/events/" + eventId).then((res) => res.body);
+}
+
+export function apiGetAttendeesByUserId(userId) {
+  return request
+    .get("/api/v1/attendees/user/" + userId)
+    .then((res) => res.body);
+}
+
+export function apiCreateAttendee(eventId, userId) {
+  return request
+    .get("/api/v1/attendees/user//attendees/" + eventId + "/" + userId)
+    .then((res) => res.body);
 }

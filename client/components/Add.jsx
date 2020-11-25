@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { addEvent } from "../apis/index";
+import { apiAddEvent, apiCreateAttendee } from "../apis/index";
 
 export class Add extends React.Component {
   state = {
@@ -16,7 +16,8 @@ export class Add extends React.Component {
     let newEvent = this.state;
     let dd = new Date(this.state.date_time); //convert to milliseconds
     newEvent.date_time = dd;
-    addEvent(newEvent);
+    apiAddEvent(newEvent);
+    // apiCreateAttendee(newEvent, this.props.auth.id)
   };
 
   handleChange = (e) => {

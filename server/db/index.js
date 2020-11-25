@@ -40,7 +40,7 @@ function getAttendeesById(userId, db = connection) {
   return db("attendees").where("user_id", userId);
 }
 
-function getAttendeesByEventId(eventId, db = connection) {  
+function getAttendeesByEventId(eventId, db = connection) {
   return db("attendees").where("event_id", eventId);
 }
 
@@ -50,7 +50,7 @@ function createAttendee(eventId, userId, db = connection) {
 }
 
 function deleteAttendee(eventId, userId, db = connection) {
-  return db("attendees").where({user_id: userId, event_id: eventId}).del();
+  return db("attendees").where({ user_id: userId, event_id: eventId }).del();
 }
 
 module.exports = {
