@@ -1,38 +1,32 @@
 import request from "superagent";
 
-export function apiGetEvents(userId){
-    return request.get("api/v1/")
-}
-
-//get all expenses
-export function apiGetExpenses(userId) {
-  return request.get("/api/v1/" + userId).then((res) => {
-    return res.body;
-  });
-}
-
-//add an expense
-export function apiAddExpense(expense) {
+export function apiAddEvent(event) {
   return request
-    .post("/api/v1")
-    .send(expense)
+    .post("/api/v1/events")
+    .send(event)
     .then((res) => {
       return res.body;
     });
 }
 
-//delete an expense
-export function apiDelExpense(expenseId) {
-  return request.delete("/api/v1/delete/" + expenseId).then((res) => {
-    return res.body;
-  });
+export function apiGetEventsByUserId(userId) {
+  return request
+    .get("/api/v1/attendees/user/" + userId)
+    .then((res) => res.body);
 }
 
-//get update an expense
-//update an expense
-export function apiEditExpense(expense) {
+export function apiGetEventById(eventId) {
+  return request.get("/api/v1/events/" + eventId).then((res) => res.body);
+}
+
+export function apiGetAttendeesByUserId(userId) {
   return request
-    .patch("/api/v1/update/" + expense.id)
-    .send(expense)
+    .get("/api/v1/attendees/user/" + userId)
+    .then((res) => res.body);
+}
+
+export function apiCreateAttendee(eventId, userId) {
+  return request
+    .get("/api/v1/attendees/user//attendees/" + eventId + "/" + userId)
     .then((res) => res.body);
 }
