@@ -24,7 +24,6 @@ export class Add extends React.Component {
   render() {
     return (
       <>
-        <h1>This is the add component</h1>
         <div className="field">
           <label className="label">Event Name</label>
           <div className="control">

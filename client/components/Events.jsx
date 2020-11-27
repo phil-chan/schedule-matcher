@@ -14,7 +14,7 @@ export class Events extends React.Component {
           <div className="buttons are-large">
             <div className="column">
               <Link to="/add">
-                <button className="button is-success">Add New Event</button>
+                <button className="button is-success" id="add-event-btn">Add New Event</button>
               </Link>
             </div>
           </div>
