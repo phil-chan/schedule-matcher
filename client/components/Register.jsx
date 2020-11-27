@@ -15,25 +15,20 @@ class Register extends React.Component {
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    let { username, password, confirm_password } = this.state;
-    if (confirm_password != password)
-      return this.props.dispatch(loginError("Passwords don't match"));
-    const confirmSuccess = () => {
-      this.props.history.push("/");
-    };
-    this.props.dispatch(
-      registerUserRequest({ username, password }, confirmSuccess)
-    );
-  };
+    e.preventDefault()
+    e.target.reset()
+    let { username, email, password, confirm_password } = this.state
+    if (confirm_password != password) return this.props.dispatch(loginError("Passwords don't match"))
+    const confirmSuccess = () => { this.props.history.push('/') }
+    this.props.dispatch(registerUserRequest({ username, email, password }, confirmSuccess))
+  }
 
   render() {
-    const { auth } = this.props;
+    const { auth } = this.props
     return (
       <form className="Register form box" onSubmit={this.handleSubmit}>
         <h1 className="title is-2">Register</h1>
