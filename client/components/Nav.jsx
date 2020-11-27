@@ -23,9 +23,8 @@ class Nav extends React.Component {
           <div className="navbar-brand">
             <span
               onClick={this.toggleBurger}
-              className={`navbar-burger burger ${
-                showBurger ? "is-active" : ""
-              }`}
+              className={`navbar-burger burger ${showBurger ? "is-active" : ""
+                }`}
               data-target="navbarMenuHeroA"
             >
               <span></span>
@@ -73,23 +72,23 @@ class Nav extends React.Component {
                   </Link>
                 </>
               ) : (
-                <>
-                  <Link
-                    onClick={this.toggleBurger}
-                    className="navbar-item is-large"
-                    to="/login"
-                  >
-                    Login
+                  <>
+                    <Link
+                      onClick={this.toggleBurger}
+                      className="navbar-item is-large"
+                      to="/login"
+                    >
+                      Login
                   </Link>
-                  <Link
-                    onClick={this.toggleBurger}
-                    className="navbar-item"
-                    to="/register"
-                  >
-                    Register
+                    <Link
+                      onClick={this.toggleBurger}
+                      className="navbar-item"
+                      to="/register"
+                    >
+                      Register
                   </Link>
-                </>
-              )}
+                  </>
+                )}
             </div>
           </div>
         </div>
