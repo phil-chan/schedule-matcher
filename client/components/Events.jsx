@@ -20,16 +20,41 @@ export class Events extends React.Component {
   }
 
   render() {
-    const { auth } = this.props;
     return (
       <>
+        <Link to="/add">
+          <button className="button is-success" id="add-event-btn">Add New Event</button>
+        </Link>
+
         <div className="columns is-centered">
           <div className="buttons are-large">
-            <div className="column">
-              <Link to="/add">
-                <button className="button is-success" id="add-event-btn">Add New Event</button>
-              </Link>
-            </div>
+            {this.props.events.userEvents.map(event =>
+              <div className="column">
+                <div class="card">
+                  <header class="card-header">
+                    <p class="card-header-title">{event.event_name}</p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                      <span class="icon">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  </header>
+                  <div class="card-content">
+                    <div class="content">
+                      {event.event_description}
+                      <br />
+                      <time>Date: {(new Date(event.date_time)).toLocaleString()}</time>
+                    </div>
+                  </div>
+                  <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Join</a>
+                    <a href="#" class="card-footer-item">Edit</a>
+                    <a href="#" class="card-footer-item">Delete</a>
+                  </footer>
+                </div>
+              </div>
+            )
+            }
           </div>
         </div>
       </>
@@ -37,9 +62,10 @@ export class Events extends React.Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, events }) => {
   return {
     auth,
+    events
   };
 };
 
