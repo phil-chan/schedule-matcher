@@ -1,19 +1,22 @@
 import React from "react";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+import { recieveEvent } from "../actions"
 // import { checkAuth } from '../actions/auth'
 
 import { apiGetAttendeesByUserId, apiGetEventById } from "../apis/index";
 
 export class Events extends React.Component {
   componentDidMount() {
-    //get all events by:
-    //get event id from attendees table
+    //get all event ids relating to user via attendees table
     //then get all events matching that id
     apiGetAttendeesByUserId(this.props.auth.user.id).then((data) =>
-      console.log(this.props.auth.user.id, data)
-    );
+      //data is an array of attendees objects
+      //NEED TO STORE DATA INTO GLOBAL STATE
+      data.map(attendees =>
+        apiGetEventById(attendees.event_id)
+          .then(userEvents => this.props.dispatch(recieveEvent(userEvents[0])))
+      ))
   }
 
   render() {
