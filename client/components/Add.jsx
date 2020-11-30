@@ -17,6 +17,7 @@ export class Add extends React.Component {
     let dd = new Date(this.state.date_time); //convert to milliseconds
     newEvent.date_time = dd;
     apiAddEvent(newEvent);
+    this.props.history.push("/");
     // apiCreateAttendee(newEvent, this.props.auth.id)
   };
 

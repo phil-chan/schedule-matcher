@@ -1,8 +1,10 @@
 import request from "superagent";
+import { getAuthorizationHeader } from "authenticare/client";
 
 export function apiAddEvent(event) {
   return request
     .post("/api/v1/events")
+    .set(getAuthorizationHeader())
     .send(event)
     .then((res) => {
       return res.body;
